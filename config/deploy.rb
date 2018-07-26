@@ -1,4 +1,4 @@
-# config valid only for current version of Capistrano
+# Capistrano version
 lock '~> 3.10.1'
 
 def deploysecret(key)
@@ -21,7 +21,7 @@ set :log_level, :info
 set :pty, true
 set :use_sudo, false
 
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml config/unicorn.rb}
 set :linked_dirs, %w{log tmp public/system public/assets}
 
 set :keep_releases, 5
@@ -41,11 +41,11 @@ set(:config_files, %w(
 set :whenever_roles, -> { :app }
 
 namespace :deploy do
-  before :starting, 'rvm1:install:rvm'  # install/update RVM
-  before :starting, 'rvm1:install:ruby' # install Ruby and create gemset
-  before :starting, 'install_bundler_gem' # install bundler gem
+  #before :starting, 'rvm1:install:rvm'  # install/update RVM
+  #before :starting, 'rvm1:install:ruby' # install Ruby and create gemset
+  #before :starting, 'install_bundler_gem' # install bundler gem
 
-  after :publishing, 'deploy:restart'
+  #after :publishing, 'restart_unicorn'
   after :published, 'delayed_job:restart'
   after :published, 'refresh_sitemap'
 
@@ -65,5 +65,12 @@ task :refresh_sitemap do
         execute :rake, 'sitemap:refresh:no_ping'
       end
     end
+  end
+end
+
+task :restart_unicorn do
+  on roles(:app) do
+    execute "kill -QUIT `cat /home/deploy/consul/shared/pids/unicorn.pid`"
+    execute "cd /home/deploy/consul/current && /home/deploy/.rvm/gems/ruby-2.3.2/wrappers/unicorn -c config/unicorn.rb -E production -D"
   end
 end
