@@ -306,14 +306,14 @@ feature 'Emails' do
       expect(email).to have_body_text(notification1.notifiable.body)
       expect(email).to have_body_text(proposal1.author.name)
 
-      expect(email).to have_body_text(/#{notification_path(notification1)}/)
+      expect(email).to have_body_text(/#{proposal_path(proposal1, anchor: 'tab-notifications')}/)
       expect(email).to have_body_text(/#{proposal_path(proposal1, anchor: 'comments')}/)
       expect(email).to have_body_text(/#{proposal_path(proposal1, anchor: 'social-share')}/)
 
       expect(email).to have_body_text(proposal2.title)
       expect(email).to have_body_text(notification2.notifiable.title)
       expect(email).to have_body_text(notification2.notifiable.body)
-      expect(email).to have_body_text(/#{notification_path(notification2)}/)
+      expect(email).to have_body_text(/#{proposal_path(proposal2, anchor: 'tab-notifications')}/)
       expect(email).to have_body_text(/#{proposal_path(proposal2, anchor: 'comments')}/)
       expect(email).to have_body_text(/#{proposal_path(proposal2, anchor: 'social-share')}/)
       expect(email).to have_body_text(proposal2.author.name)
@@ -336,7 +336,7 @@ feature 'Emails' do
       visit new_management_user_invite_path
 
       fill_in "emails", with: " john@example.com, ana@example.com,isable@example.com "
-      click_button "Send invites"
+      click_button "Send invitations"
 
       expect(page).to have_content "3 invitations have been sent."
 
