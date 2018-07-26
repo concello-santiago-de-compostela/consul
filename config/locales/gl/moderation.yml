@@ -1,0 +1,77 @@
+gl:
+  moderation:
+    comments:
+      index:
+        block_authors: Bloquear autores/as
+        confirm: Tes a certeza?
+        filter: Filtro
+        filters:
+          all: Todo
+          pending_flag_review: Pendentes
+          with_ignored_flag: Marcados como revisados
+        headers:
+          comment: Comentario
+          moderate: Moderar
+        hide_comments: Ocultar comentarios
+        ignore_flags: Marcar como revisados
+        order: Orde
+        orders:
+          flags: Máis denunciados
+          newest: Máis novos
+        title: Comentarios
+    dashboard:
+      index:
+        title: Moderar
+    debates:
+      index:
+        block_authors: Bloquear autores/as
+        confirm: Tes a certeza?
+        filter: Filtro
+        filters:
+          all: Todo
+          pending_flag_review: Pendente
+          with_ignored_flag: Marcados como revisados
+        headers:
+          debate: Debate
+          moderate: Moderar
+        hide_debates: Ocultar debates
+        ignore_flags: Marcar como revisadas
+        order: Orde
+        orders:
+          created_at: Máis novos
+          flags: Máis denunciadas
+        title: Debates
+    header:
+      title: Moderaración
+    menu:
+      flagged_comments: Comentarios
+      flagged_debates: Debates
+      proposals: Propostas
+      users: Bloquear usuarios
+    proposals:
+      index:
+        block_authors: Bloquear autores/as
+        confirm: Tes a certeza?
+        filter: Filtro
+        filters:
+          all: Todas
+          pending_flag_review: Pendentes de revisión
+          with_ignored_flag: Marcadas como revisadas
+        headers:
+          moderate: Moderar
+          proposal: Proposta
+        hide_proposals: Ocultar propostas
+        ignore_flags: Marcadas como revisadas
+        order: Ordenar por
+        orders:
+          created_at: Máis recentes
+          flags: Máis denunciadas
+        title: Propostas
+    users:
+      index:
+        hidden: Bloqueado
+        hide: Bloquear
+        search: Procurar
+        search_placeholder: correo electrónico ou nome de usuario
+        title: Bloquear usuarios/as
+      notice_hide: Usuario bloqueado. Ocultáronse todos os seus debates e comentarios.
