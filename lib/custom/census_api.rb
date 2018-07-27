@@ -33,6 +33,7 @@ class CensusApi
         end
 
         def valid?
+            puts data
             data[:empadroado] == 'SI'
         end
     
