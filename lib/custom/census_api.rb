@@ -35,11 +35,11 @@ class CensusApi
         end
 
         def valid?
-            data[:esta_empadronado_result] == '1'
+            data[:empadroado] == 'SI'
         end
     
         def code
-            data[:esta_empadronado_result]
+            data[:empadroado]
         end
 
         def data
