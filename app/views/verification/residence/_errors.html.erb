@@ -10,9 +10,10 @@
   </div>
 
 <% else %>
-  <%= @residence.errors %>
-  <%= @census_data %>
   <%= render "shared/errors",
              resource: @residence,
              message: t("verification.residence.new.form_errors")  %>
 <% end %>
+
+<%= @residence.errors %>
+<%= @census_data %>
