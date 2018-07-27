@@ -7,7 +7,6 @@ class CensusApi
         logger = Logger.new(STDOUT)
         response = nil
         get_document_number_variants(document_number).each do |variant|
-            debugger
             response = Response.new(get_response_body(variant, date_of_birth))
             logger.debug "response: #{response.inspect} code #{response.code}"
         return response if response.valid?
