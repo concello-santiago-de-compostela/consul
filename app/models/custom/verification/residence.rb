@@ -36,8 +36,6 @@ class Verification::Residence
     end
 
     def valid_postal_code?
-      puts "Validando POSTAL CODE"
-      puts ["15701", "15702", "15703", "15704", "15705", "15706", "15707", "15899"].include?(postal_code)
       ["15701", "15702", "15703", "15704", "15705", "15706", "15707", "15899"].include?(postal_code)
     end
 

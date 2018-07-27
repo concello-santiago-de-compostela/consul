@@ -82,7 +82,7 @@ class CensusApi
         {
             :confirma_padron_entrada => {
                 :dni => document_number,
-                "tns:data_nac" => date_of_birth,
+                "tns:data_nac" => transform_date_of_birth(date_of_birth),
                 :appkey => Rails.application.secrets.census_api_institution_code 
             }
         }
@@ -94,20 +94,6 @@ class CensusApi
     end
 
     def stubbed_response_body
-=begin       
-        {
-            :get_ciudadano_response => {
-                :apellido1=>nil, 
-                :apellido2=>nil, 
-                :codigo_postal=>nil, 
-                :fecha_nacimiento=>nil, 
-                :nif=>nil, 
-                :nombre=>nil, 
-                :sexo=>nil
-            }, 
-            :@xmlns=>"http://schemas.xmlsoap.org/wsdl/"
-        }
-=end
         {
             :confirma_padron_response => {
                 :return => {
