@@ -20,6 +20,8 @@ class Verification::Residence
   end
 
   def district_code
+    puts "district_code"
+    puts postal_code
     postal_code
   end
 
@@ -34,10 +36,15 @@ class Verification::Residence
     end
 
     def valid_postal_code?
+      puts "Validando POSTAL CODE"
+      puts ["15701", "15702", "15703", "15704", "15705", "15706", "15707", "15899"].include?(postal_code)
       ["15701", "15702", "15703", "15704", "15705", "15706", "15707", "15899"].include?(postal_code)
     end
 
     def residency_valid?
+      puts "Validando @census_data.valid?"
+      puts @census_data.valid?
+      puts @census_data
       @census_data.valid?
     end
 
