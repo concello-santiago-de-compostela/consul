@@ -56,13 +56,13 @@ class CensusApi
     def get_response_body(document_number, date_of_birth)
         logger = Logger.new(STDOUT)
 
-    if end_point_available?
-           r = request(document_number, date_of_birth)
-           logger.debug "request #{r.inspect} "
-           @rebody= client.call(:confirma_padron, message: request(document_number, date_of_birth)).body
-           logger.debug "response-api #{@rebody.inspect} "
-        @rebody 
-    else
+        if end_point_available?
+               r = request(document_number, date_of_birth)
+               logger.debug "request #{r.inspect} "
+               @rebody= client.call(:confirma_padron, message: request(document_number, date_of_birth)).body
+               logger.debug "response-api #{@rebody.inspect} "
+            @rebody 
+        else
             stubbed_response_body
         end
     end
@@ -82,8 +82,8 @@ class CensusApi
     def request(document_number, date_of_birth)
         {
             :confirma_padron_entrada => {
-                :dni => document_id,
-                "tns:data_nac" => dateofbirth,
+                :dni => document_number,
+                "tns:data_nac" => date_of_birth,
                 :appkey => Rails.application.secrets.census_api_institution_code 
             }
         }
