@@ -34,11 +34,11 @@ class CensusApi
 
         def valid?
             puts data
-            data[:empadroado] == 'SI'
+            data[:return][:empadroado] == 'SI'
         end
     
         def code
-            data[:empadroado]
+            data[:return][:empadroado]
         end
 
         def data
@@ -57,6 +57,8 @@ class CensusApi
 
         if end_point_available?
                r = request(document_number, date_of_birth)
+               puts ""
+               puts "|||| REQUEST ||||"
                logger.debug "request #{r.inspect} "
                @rebody= client.call(:confirma_padron, message: request(document_number, date_of_birth)).body
                logger.debug "response-api #{@rebody.inspect} "

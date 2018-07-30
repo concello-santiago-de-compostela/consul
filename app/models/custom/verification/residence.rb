@@ -40,6 +40,8 @@ class Verification::Residence
     end
 
     def residency_valid?
+      puts""
+      puts"||||| residency_valid? |||||"
       puts "Validando @census_data.valid?"
       puts @census_data.valid?
       puts @census_data
