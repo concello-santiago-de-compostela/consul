@@ -73,9 +73,6 @@ Rails.application.configure do
      address:              'scq1e2.concello.santiagodecompostela.org',
      port:                 25,
      domain:               'santiagodecompostela.org',
-     user_name:            '',
-     password:             '',
-     authentication:       'plain',
      enable_starttls_auto: true }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
