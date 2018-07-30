@@ -240,6 +240,12 @@ gl:
       poll_questions: Votacións
       budgets: Orzamentos participativos
       spending_proposals: Propostas de investimento
+      notification_item:
+        new_notifications:
+          one: Tes unha nova notificación
+          other: Tes %{count} novas notificacións
+        notifications: Notificacións
+        no_notifications: "Non tes notificacións novas"
     admin:
       watch_form_message: 'Realizaches cambios que aínda non se gardaron. Tes a certeza de que queres deixar a páxina?'
   legacy_legislation:

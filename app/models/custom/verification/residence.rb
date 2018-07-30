@@ -20,8 +20,6 @@ class Verification::Residence
   end
 
   def district_code
-    puts "district_code"
-    puts postal_code
     postal_code
   end
 
@@ -40,11 +38,6 @@ class Verification::Residence
     end
 
     def residency_valid?
-      puts""
-      puts"||||| residency_valid? |||||"
-      puts "Validando @census_data.valid?"
-      puts @census_data.valid?
-      puts @census_data
       @census_data.valid?
     end
 
