@@ -46,7 +46,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :warn
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -64,6 +64,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: Rails.application.secrets.server_name }
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
 
   # SMTP configuration to deliver emails
