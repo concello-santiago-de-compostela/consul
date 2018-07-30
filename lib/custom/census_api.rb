@@ -75,8 +75,8 @@ class CensusApi
 
     def transform_date_of_birth(date_of_birth)
         date_api = date_of_birth.strftime('%d/%m/%Y')
-        #logger = Logger.new(STDOUT)
-        #logger.debug "fecha api #{date_api.inspect} "
+        logger = Logger.new(STDOUT)
+        logger.debug "fecha api #{date_api.inspect} "
         date_api
     end
 
