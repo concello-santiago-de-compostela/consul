@@ -1,0 +1,83 @@
+gl:
+  pages:
+    census_terms: Para verificar a conta hai que ter 16 años ou máis e estar empadroado, ademais de achegar os datos que se indicaron anteriormente, que serán contrastados. Aceptando o proceso de verificación aceptas dar o teu consentimento para contrastar esta información, así como os medios de contacto que figuren nos devanditos ficheiros. Os datos que achegues serán incorporados y tratados nun ficheiro indicado anteriormente nas condicións de uso do portal.
+    conditions: Condicións de uso
+    general_terms: Termos e condicións
+    help:
+      title: "%{org} é unha plataforma de participación cidadá"
+      subtitle: "En %{org} pódense facer propuestas, votar en consultas cidadás, presentar proxectos de orzamentos participativos, decidir a normativa municipal e abrir debates para intercambiar opinións con outras personas."
+      guide: "Esta guía explica para que serven e como funcionan cada unha das seccións de %{org}."
+      menu:
+        debates: "Debates"
+        proposals: "Propostas"
+        budgets: "Orzamentos participativos"
+        other: "Outra información de interese"
+      debates:
+        title: "Debates"
+        description: "Na sección de %{link} podes expoñer e compartir a túa opinión con outras persoas sobre temas que che preocupan relacionados co municipio. Tamén é un espazo onde xerar ideas que a través das outras secciones de %{org} leven a actuacións concretas por parte do Concello."
+        link: "debates cidadáns"
+        feature_html: "Podes abrir debates, comentalos e valoralos cos botóns de <strong>estou de acordo</strong> ou <strong>non estou de acordo</strong>. Para iso tes que %{link}."
+        feature_link: "registrarte en %{org}"
+        image_alt: "Botóns para avaliar os debates"
+        figcaption: 'Botones "estou de acordo" e "non estou de acordo" para avaliar os debates.'
+      proposals:
+        title: "Propostas"
+        description: "Na sección %{link} podes formular propostas para que o Concello as leve a cabo. As propostas obteñen apoios e se alcanzan abondos sométense a votación cidadá. As propostas aprobadas nestas votacións cidadás son asumidas polo Concello e lévanse a cabo."
+        link: "propostas cidadás"
+        feature_html: "Para crear unha proposta hai que rexistrarse en %{org}. As propostas que conseguen o apoio na web do 1% da xente con dereito a voto (%{supports} apoios de persoas maiores de 16 anos empadroadas) pasan a votación. Para apoiar propostas é necesario verificar a túa conta."
+        image_alt: "Botón para apoiar unha proposta"
+        figcaption_html: 'Botón para "apoiar" unha proposta. <br>Cando alcance o número de apoios pasará a votación.'
+      budgets:
+        title: "Orzamentos participativos"
+        description: "A sección de %{link} serve para que a xente decida de maneira directa a que se destina unha parte do orzamento municipal."
+        link: "orzamentos participativos"
+        feature: "Neste proceso cada ano a xente formula, apoia e vota proxectos. Os máis votados pasan a financiarse co orzamento municipal."
+        phase_1_html: "Entre xaneiro e principios de marzo, as persoas rexistradas en %{org} poden <strong>presentar proxectos</strong>."
+        phase_2_html: "En marzo, as persoas que fixeron propostas teñen que obter apoios, a modo de <strong>fase de preselección</strong>."
+        phase_3_html: "Entre abril e comezos de maio, o persoal técnico do Concello <strong>taxan os proxectos</strong> por orde de máis a menos número de apoios e comproban que son viables."
+        phase_4_html: "Para rematar, entre maio e xuño, toda a cidadanía pode <strong>votar</strong> os proxectos que máis lle interese."
+        phase_5_html: "A partir da aprobación dos orzamentos ao ano seguinte, o concello comeza a levar a cabo os proxectos gañadores."
+        image_alt: "Diferentes fases dun orzamento participativo"
+        figcaption_html: 'Fase de "apoios" e de "votación" dos orzamentos participativos.'
+      polls:
+        title: "Votacións"
+        description: "A sección de %{link} actívase cada vez que unha proposta acada o 1% dos apoios e pasa á votación ou cando o Concello propón un tema para que a xente decida sobre el."
+        link: "votacións"
+        feature_1: "Para participares na votación, tes que %{link} e verificar a túa conta."
+        feature_1_link: "rexistrarte en %{org_name}"
+        feature_2: "Poden votar todas as persoas empadroadas na cidade maiores de 16 anos."
+        feature_3: "Os resultados de todas as votacións son vinculantes para o goberno municipal."
+      faq:
+        title: "Problemas técnicos?"
+        description: "Le as preguntas frecuentes e resolve as túas dúbidas."
+        button: "Ver as preguntas frecuentes"
+        page:
+          title: "Preguntas frecuentes"
+          description: "Emprega esta páxina para resolveres as preguntas frecuentes ás persoas usuarias do sitio."
+          faq_1_title: "Pregunta 1"
+          faq_1_description: "Este é un exemplo para a descrición da primeira pregunta."
+      other:
+        title: "Outra información de interese"
+        how_to_use: "Emprega %{org_name} no teu concello"
+      how_to_use:
+        text: |-
+          Emprégao no teu concello ou axúdanos a melloralo, é software libre.
+          
+          Este portal de goberno aberto emprega a [aplicación CONSUL app] (https://github.com/consul/consul 'consul github') que é software libre con [licenzaAGPLv3](http://www.gnu.org/licenses/agpl-3.0.html 'AGPLv3 gnu' ), o que significa que calquera pode usar libremente o código, copialo, velo en detalle, modificalo e redistribuílo ao mundo coas notificacións que quixer (mantendo o que outros poidan facer á súa vez o mesmo). Porque xulgamos que a cultura é mellor e máis rica cando se libera.
+          
+          Se sabes programar, podes ver o código e axudáresnos a melloralo en [CONSUL app](https://github.com/consul/consul 'consul github').
+      titles:
+        how_to_use: Emprégao no teu concello
+    privacy: Política de privacidade
+    titles:
+      accessibility: Accesibilidade
+      conditions: Condicións de uso
+      help: "Que é %{org}? - Participación cidadá"
+      privacy: Política de privacidade
+    verify:
+      code: Código que recibiches na túa carta
+      email: Correo electrónico
+      info_code: 'Agora escribe o código que recibiches na carta:'
+      password: Contrasinal
+      submit: Verificar a miña conta
+      title: Verifica a túa conta
