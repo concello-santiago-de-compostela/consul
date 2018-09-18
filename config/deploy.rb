@@ -12,9 +12,9 @@ set :rvm1_ruby_version, '2.3.2'
 set :application, 'consul'
 set :full_app_name, deploysecret(:full_app_name)
 
-set :branch, 'deploy-santiago'
+set :branch, 'master'
 set :server_name, deploysecret(:server_name)
-set :repo_url, 'git@bitbucket.org:enreda/decidesantiago.git'
+set :repo_url, 'git@github.com:concello-santiago-de-compostela/consul.git'
 
 set :revision, `git rev-parse --short #{fetch(:branch)}`.strip
 
