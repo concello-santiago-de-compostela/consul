@@ -6,6 +6,7 @@ class Setting
 
     def defaults
       consul_defaults.merge({
+        "facebook_handle": "concellosantiago",
         "remote_census.general.endpoint": Rails.application.secrets.census_api_end_point,
         "remote_census.request.method_name": "confirma_padron",
         "remote_census.request.structure": %Q({ "confirma_padron_entrada":
@@ -25,7 +26,9 @@ class Setting
         "remote_census.response.gender": nil,
         "remote_census.response.name": nil,
         "remote_census.response.surname": nil,
-        "remote_census.response.valid": "confirma_padron_response.return.empadroado"
+        "remote_census.response.valid": "confirma_padron_response.return.empadroado",
+        "twitter_handle": "pazoderaxoi",
+        "youtube_handle": "channel/UCSrcC2UgDHIb80vVVRtvoDw"
       })
     end
   end
