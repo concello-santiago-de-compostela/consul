@@ -5,6 +5,32 @@
 //
 
 header {
+  background-color: #f9f9f9;
+
+  .top-links,
+  .subnavigation,
+  .top-bar {
+    color: $black;
+    background: transparent;
+
+    a {
+      color: $black;
+
+      &:focus,
+      &:hover {
+        color: #dd3464; // TODO: use $link or $brand
+      }
+    }
+  }
+
+  .top-bar {
+    background: transparent !important; // TODO: Remove important when it's removed from the original file
+    padding: 0 rem-calc(16);
+
+    .top-bar-title {
+      margin-top: 0;
+    }
+  }
 
   .top-links {
     display: flex;
@@ -16,6 +42,14 @@ header {
 
     > :first-child {
       margin-right: auto;
+    }
+  }
+
+  .top-links,
+  .social {
+
+    li::after {
+      content: "";
     }
   }
 }
