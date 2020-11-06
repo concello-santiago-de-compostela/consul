@@ -4,10 +4,11 @@
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
 
+$link: #dd3464; // TODO: use $brand?
+
 header {
   $border: 1px solid #a8a8a8;
   $gray: #f9f9f9;
-  $link: #dd3464; // TODO: use global $link or $brand
 
   background-color: $gray;
   border: 0;
@@ -198,6 +199,53 @@ header {
       &.is-active {
         color: $link;
         border-bottom-color: $link;
+      }
+    }
+  }
+}
+
+.admin {
+
+  .top-links {
+    background: transparent;
+    max-width: none;
+
+    > :only-child {
+      display: flex;
+      flex-direction: row-reverse;
+      margin: 0;
+      width: 100%;
+
+      > :first-child {
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+
+    a {
+      color: $link;
+    }
+  }
+
+  .admin-top-bar {
+    background: transparent;
+  }
+
+  .top-bar {
+    background: transparent !important; // TODO: Remove important when it's removed in the original file
+  }
+
+  .top-bar-left {
+    flex: 0;
+  }
+
+  .top-bar .menu > li {
+
+    a {
+      color: $black !important; // TODO: Remove important when it's removed in the original file
+
+      &:hover {
+        color: $link !important; // TODO: Remove important when it's removed in the original file
       }
     }
   }
