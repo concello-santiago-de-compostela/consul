@@ -5,7 +5,10 @@
 //
 
 header {
-  background-color: #f9f9f9;
+  $gray: #f9f9f9;
+
+  background-color: $gray;
+  padding-top: $line-height / 2;
 
   .top-links,
   .subnavigation,
@@ -33,6 +36,7 @@ header {
   }
 
   .top-links {
+    align-items: center;
     display: flex;
     justify-content: flex-end;
     margin-left: auto;
@@ -47,6 +51,10 @@ header {
 
   .top-links,
   .social {
+
+    ul {
+      line-height: 0;
+    }
 
     li::after {
       content: "";
@@ -85,6 +93,30 @@ header {
 
     .icon-otempo {
       @include has-fa-icon(cloud, solid);
+    }
+  }
+
+  .locale {
+    height: auto;
+
+    &::after {
+      color: $black;
+      font-size: 1rem;
+      top: 1px;
+    }
+
+    label {
+      @include element-invisible;
+    }
+
+    .locale-switcher {
+      background-color: $gray;
+      border: 1px solid #979797;
+      border-radius: 4px;
+      color: $black;
+      font-size: rem-calc(14);
+      height: 2em;
+      margin-top: 0;
     }
   }
 }
