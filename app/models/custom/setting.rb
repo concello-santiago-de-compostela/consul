@@ -6,6 +6,9 @@ class Setting
 
     def defaults
       consul_defaults.merge({
+        "feature.facebook_login": false,
+        "feature.google_login": false,
+        "feature.twitter_login": false,
         "facebook_handle": "concellosantiago",
         "remote_census.general.endpoint": Rails.application.secrets.census_api_end_point,
         "remote_census.request.method_name": "confirma_padron",
