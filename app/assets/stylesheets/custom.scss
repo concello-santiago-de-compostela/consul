@@ -247,6 +247,14 @@ header {
       }
     }
   }
+
+  tr {
+    border: 0;
+
+    &:hover {
+      background: #f3f6f7; // TODO: Ask the bibiana
+    }
+  }
 }
 
 input:focus {
@@ -255,4 +263,22 @@ input:focus {
 
 body {
   background: #f9f9f9;
+}
+
+// 11. Tables (layout.scss)
+// ----------
+
+table {
+
+  tr {
+
+    &:nth-child(odd) {
+      background: #f9f9f9;
+    }
+
+    &:nth-child(even) {
+      background: #fff4f4;
+    }
+  }
+
 }
