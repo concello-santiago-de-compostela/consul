@@ -273,6 +273,13 @@ header {
   .notifications .icon-circle {
     color: $admin-color;
   }
+
+  .menu.simple {
+    .is-active {
+      border-bottom: 2px solid $admin-color;
+      color: $admin-color;
+    }
+  }
 }
 
 input:focus {
