@@ -6,7 +6,6 @@
 
 header {
   $border: 1px solid #a8a8a8;
-  $gray: #f9f9f9;
 
   background-color: $gray;
   border: 0;
@@ -262,7 +261,7 @@ input:focus {
 }
 
 body {
-  background: #f9f9f9;
+  background: $gray;
 }
 
 // 11. Tables (layout.scss)
