@@ -4,6 +4,13 @@
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
 
+// 01. Global styles (admin.scss)
+// -----------------
+
+$admin-color:    $brand;
+$sidebar-hover: #fff4f4;
+$sidebar-active: $brand;
+
 header {
   $border: 1px solid #a8a8a8;
 
@@ -254,6 +261,10 @@ header {
       background: #f3f6f7; // TODO: Ask the bibiana
     }
   }
+
+  .notifications .icon-circle {
+    color: $admin-color;
+  }
 }
 
 input:focus {
@@ -280,11 +291,6 @@ table {
     }
   }
 }
-// 01. Global styles (admin.scss)
-// -----------------
-
-$sidebar-hover: #fff4f4;
-$sidebar-active: $brand;
 
 // 02. Sidebar (admin.scss)
 // -----------
