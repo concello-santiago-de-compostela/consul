@@ -280,3 +280,48 @@ table {
     }
   }
 }
+// 01. Global styles (admin.scss)
+// -----------------
+
+$sidebar-hover: #fff4f4;
+$sidebar-active: $brand;
+
+// 02. Sidebar (admin.scss)
+// -----------
+
+.admin-sidebar {
+  background: $gray;
+
+  ul {
+    [class^="icon-"] {
+      color: $black;
+    }
+  }
+
+  li {
+    ul {
+      border-left: 1px solid $sidebar-hover;
+    }
+
+    &.is-active a {
+      background: $sidebar-hover;
+      border-left: 2px solid $sidebar-active;
+      color: $brand;
+      [class^="icon-"] {
+        color: $brand;
+      }
+    }
+  }
+
+  li a {
+    color: $black;
+
+    &:hover {
+      background: $sidebar-hover;
+      color: $brand;
+      [class^="icon-"] {
+        color: $brand;
+      }
+    }
+  }
+}
