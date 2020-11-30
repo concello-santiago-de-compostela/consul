@@ -425,3 +425,27 @@ table {
     color: $gray;
   }
 }
+
+// 01. Votes and supports (participation.scss)
+// ----------------------
+.proposal .supports {
+
+  .progress {
+    background: lighten($brand, 35%);
+    border: 1px solid lighten($brand, 35%);
+
+    .meter {
+      background: $brand;
+    }
+  }
+
+  .button-support {
+    background: $brand;
+    color: $gray;
+
+    &:hover,
+    &:active {
+      background: lighten($brand, 25%);
+    }
+  }
+}
