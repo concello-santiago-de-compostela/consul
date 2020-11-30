@@ -449,3 +449,21 @@ table {
     }
   }
 }
+
+// 03. Legislation cards (legislation.scss)
+// -----------------
+
+.legislation-calendar {
+  background: #fff4f4;
+}
+
+.key-dates li:hover:not(.is-active) {
+  background: #fff4f4;
+}
+
+// 20. Documents
+// -------------
+
+.additional-document-link {
+  background: #fff4f4;
+}
