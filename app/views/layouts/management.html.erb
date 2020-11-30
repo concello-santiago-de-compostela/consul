@@ -17,18 +17,11 @@
 
       <div class="expanded row admin-top-bar">
         <div class="top-bar">
-          <div class="top-bar-left">
-            <ul class="menu">
-              <li class="menu-text">
-                <h1>
-                  <%= link_to management_root_path do %>
-                    <%= setting["org_name"] %>
-                    <br><small><%= t("management.dashboard.index.title") %></small>
-                  <% end %>
-                </h1>
-              </li>
-            </ul>
-          </div>
+          <div class="top-bar-title">
+            <%= link_to management_root_path, accesskey: "0" do %>
+              <%= image_tag(image_path_for("logo_header.png"), class: "float-left", alt: t("layouts.header.logo")) %>
+            <% end %>
+         </div>
           <% if show_admin_menu?(manager_logged_in) %>
             <div id="responsive_menu">
 
