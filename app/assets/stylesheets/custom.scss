@@ -365,3 +365,15 @@ table {
     color: $color-info;
   }
 }
+
+.tabs-content {
+  background: $gray;
+}
+
+.tabs {
+  background: $gray;
+}
+
+.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
+  background: $gray;
+}
