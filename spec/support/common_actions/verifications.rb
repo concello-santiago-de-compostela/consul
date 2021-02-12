@@ -13,7 +13,7 @@ module Verifications
     select_date "31-#{I18n.l(Date.current.at_end_of_year, format: "%B")}-1980",
                 from: "residence_date_of_birth"
 
-    fill_in "residence_postal_code", with: "28013"
+    fill_in "residence_postal_code", with: "15688"
     check "residence_terms_of_service"
 
     click_button "new_residence_submit"
@@ -23,7 +23,11 @@ module Verifications
   def officing_verify_residence
     select "DNI", from: "residence_document_type"
     fill_in "residence_document_number", with: "12345678Z"
-    fill_in "residence_year_of_birth", with: "1980"
+    if Setting.force_presence_date_of_birth?
+      select_date "31-December-1980", from: "residence_date_of_birth"
+    else
+      fill_in "residence_year_of_birth", with: "1980"
+    end
 
     click_button "Validate document"
 
@@ -63,5 +67,14 @@ module Verifications
     within(".fullscreen") do
       click_link "Close text editor"
     end
+  end
+
+  def configure_remote_census_api(date_of_birth_path: "", postal_code_path: "")
+    Setting["feature.remote_census"] = true
+    Setting["remote_census.request.date_of_birth"] = date_of_birth_path
+    Setting["remote_census.request.postal_code"] = postal_code_path
+    access_user_data = "confirma_padronResponse.return"
+    Setting["remote_census.response.district"] = "#{access_user_data}.distrito"
+    Setting["remote_census.response.valid"] = "#{access_user_data}.distrito"
   end
 end

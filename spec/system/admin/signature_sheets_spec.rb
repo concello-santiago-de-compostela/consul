@@ -78,14 +78,7 @@ describe "Signature sheets" do
 
   context "Create throught all required_fields_to_verify of custom census api" do
     before do
-      Setting["feature.remote_census"] = true
-      Setting["remote_census.request.date_of_birth"] = "some.value"
-      Setting["remote_census.request.postal_code"] = "some.value"
-      access_user_data = "get_habita_datos_response.get_habita_datos_return.datos_habitante.item"
-      access_residence_data = "get_habita_datos_response.get_habita_datos_return.datos_vivienda.item"
-      Setting["remote_census.response.date_of_birth"] = "#{access_user_data}.fecha_nacimiento_string"
-      Setting["remote_census.response.postal_code"] = "#{access_residence_data}.codigo_postal"
-      Setting["remote_census.response.valid"] = access_user_data
+      configure_remote_census_api
     end
 
     scenario "Proposal" do
@@ -94,7 +87,7 @@ describe "Signature sheets" do
 
       select "Citizen proposal", from: "signature_sheet_signable_type"
       fill_in "signature_sheet_signable_id", with: proposal.id
-      fill_in "signature_sheet_required_fields_to_verify", with: "12345678Z, 31/12/1980, 28013; 99999999Z, 31/12/1980, 28013"
+      fill_in "signature_sheet_required_fields_to_verify", with: "12345678Z, 31/12/1980, 15688; 99999999Z, 31/12/1980, 28013"
       click_button "Create signature sheet"
 
       expect(page).to have_content "Signature sheet created successfully"

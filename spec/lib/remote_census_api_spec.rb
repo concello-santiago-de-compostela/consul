@@ -161,41 +161,24 @@ describe RemoteCensusApi do
 
       response = RemoteCensusApi.new.send(:get_response_body, document_type, document_number, nil, nil)
 
-      expect(response).to eq({ get_habita_datos_response: {
-                                 get_habita_datos_return: {
-                                   datos_habitante: {
-                                     item: {
-                                       fecha_nacimiento_string: "31-12-1980",
-                                       identificador_documento: "12345678Z",
-                                       descripcion_sexo: "Varón",
-                                       nombre: "José",
-                                       apellido1: "García"
-                                     }
-                                   },
-                                   datos_vivienda: {
-                                     item: {
-                                       codigo_postal: "28013",
-                                       codigo_distrito: "01"
-                                     }
-                                   }
+      expect(response).to eq({ confirma_padronResponse: {
+                                 return: {
+                                   codigo_resposta: "1",
+                                   empadroado: "SI",
+                                   distrito: "1",
+                                   seccion: "6"
                                  }
-                               }
-                             })
+                                }
+                              })
     end
   end
 
   describe "RemoteCensusApi::Response" do
     before do
       Setting["feature.remote_census"] = true
-      access_user_data = "get_habita_datos_response.get_habita_datos_return.datos_habitante.item"
-      access_residence_data = "get_habita_datos_response.get_habita_datos_return.datos_vivienda.item"
-      Setting["remote_census.response.date_of_birth"] = "#{access_user_data}.fecha_nacimiento_string"
-      Setting["remote_census.response.postal_code"] = "#{access_residence_data}.codigo_postal"
-      Setting["remote_census.response.district"] = "#{access_residence_data}.codigo_distrito"
-      Setting["remote_census.response.gender"] = "#{access_user_data}.descripcion_sexo"
-      Setting["remote_census.response.name"] = "#{access_user_data}.nombre"
-      Setting["remote_census.response.surname"] = "#{access_user_data}.apellido1"
-      Setting["remote_census.response.valid"] = access_user_data
+      access_user_data = "confirma_padronResponse.return"
+      Setting["remote_census.response.district"] = "#{access_user_data}.distrito"
+      Setting["remote_census.response.valid"] = "#{access_user_data}.distrito"
     end
 
     it "return expected response methods with default values" do
@@ -206,11 +189,11 @@ describe RemoteCensusApi do
       response = RemoteCensusApi::Response.new(get_response_body)
 
       expect(response.valid?).to eq true
-      expect(response.date_of_birth).to eq Time.zone.local(1980, 12, 31).to_date
-      expect(response.postal_code).to eq "28013"
-      expect(response.district_code).to eq "01"
-      expect(response.gender).to eq "male"
-      expect(response.name).to eq "José García"
+      expect(response.date_of_birth).to be_blank
+      expect(response.postal_code).to be_blank
+      expect(response.district_code).to eq("1")
+      expect(response.gender).to be_blank
+      expect(response.name).to be_blank
     end
   end
 end
