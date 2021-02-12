@@ -75,6 +75,7 @@ describe "Residence", :with_frozen_time do
     end
 
     scenario "Error on Census (year of birth)" do
+      skip "This error cannot be reproduced since date_of_birth is not in the webservice response"
       within("#side_menu") do
         click_link "Validate document"
       end

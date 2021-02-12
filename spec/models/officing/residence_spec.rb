@@ -39,7 +39,7 @@ describe Officing::Residence do
         build(:officing_residence,
               document_number: "12345678Z",
               date_of_birth: "01/01/1980",
-              postal_code: "28001")
+              postal_code: "15688")
       end
 
       before do
@@ -101,7 +101,7 @@ describe Officing::Residence do
 
         residence = build(:officing_residence,
                           :invalid,
-                          document_number: "12345678Z",
+                          document_number: "87654321Z",
                           postal_code: "00001")
         residence.save
 
@@ -109,7 +109,7 @@ describe Officing::Residence do
         expect(FailedCensusCall.first).to have_attributes(
           user_id:         residence.user.id,
           poll_officer_id: residence.officer.id,
-          document_number: "12345678Z",
+          document_number: "87654321Z",
           document_type:   "1",
           date_of_birth: nil,
           postal_code: "00001",
@@ -120,15 +120,33 @@ describe Officing::Residence do
 
     describe "allowed age" do
       it "is not valid if user is under allowed age" do
+        skip "CensusApi is not configured on this fork"
         allow_any_instance_of(Officing::Residence).to receive(:response_date_of_birth).and_return(15.years.ago)
         expect(residence).not_to be_valid
         expect(residence.errors[:year_of_birth]).to include("You don't have the required age to participate")
       end
 
       it "is valid if user is above allowed age" do
+        skip "CensusApi is not configured on this fork"
         allow_any_instance_of(Officing::Residence).to receive(:response_date_of_birth).and_return(16.years.ago)
         expect(residence).to be_valid
         expect(residence.errors[:year_of_birth]).to be_empty
+      end
+
+      describe "when using remote census api" do
+        before { configure_remote_census_api(date_of_birth_path: "some.value") }
+
+        it "is not valid if user is under allowed age" do
+          allow_any_instance_of(Officing::Residence).to receive(:date_of_birth).and_return(15.years.ago)
+          expect(residence).not_to be_valid
+          expect(residence.errors[:year_of_birth]).to include("You don't have the required age to participate")
+        end
+
+        it "is valid if user is above allowed age" do
+          allow_any_instance_of(Officing::Residence).to receive(:date_of_birth).and_return(16.years.ago)
+          expect(residence).to be_valid
+          expect(residence.errors[:year_of_birth]).to be_empty
+        end
       end
     end
   end
@@ -147,6 +165,8 @@ describe Officing::Residence do
 
   describe "save" do
     it "stores document number, document type, geozone, date of birth and gender" do
+      skip "CensusApi is not configured on this fork"
+
       residence.save!
       user = residence.user
 
@@ -156,6 +176,23 @@ describe Officing::Residence do
       expect(user.date_of_birth.month).to eq(12)
       expect(user.date_of_birth.day).to eq(31)
       expect(user.gender).to eq("male")
+      expect(user.geozone).to eq(geozone)
+    end
+
+    it "stores document number, document type, geozone, date of birth and gender when using remote census" do
+      geozone.update!(census_code: "1")
+      residence.date_of_birth = "31/12/1980"
+      configure_remote_census_api(date_of_birth_path: "some.value")
+
+      residence.save!
+      user = residence.user
+
+      expect(user.document_number).to eq("12345678Z")
+      expect(user.document_type).to eq("1")
+      expect(user.date_of_birth.year).to eq(1980)
+      expect(user.date_of_birth.month).to eq(12)
+      expect(user.date_of_birth.day).to eq(31)
+      expect(user.gender).to be_blank
       expect(user.geozone).to eq(geozone)
     end
 
@@ -184,6 +221,18 @@ describe Officing::Residence do
     end
 
     it "makes half-verified users fully verified" do
+      skip "CensusApi is not configured on this fork"
+      user = create(:user, residence_verified_at: Time.current, document_type: "1", document_number: "12345678Z")
+      expect(user).to be_unverified
+      residence = build(:officing_residence, document_number: "12345678Z", year_of_birth: 1980)
+      expect(residence).to be_valid
+      expect(user.reload).to be_unverified
+      residence.save!
+      expect(user.reload).to be_level_three_verified
+    end
+
+    it "makes half-verified users fully verified when using remote census api" do
+      configure_remote_census_api
       user = create(:user, residence_verified_at: Time.current, document_type: "1", document_number: "12345678Z")
       expect(user).to be_unverified
       residence = build(:officing_residence, document_number: "12345678Z", year_of_birth: 1980)
@@ -194,6 +243,7 @@ describe Officing::Residence do
     end
 
     it "stores failed census calls" do
+      skip "CensusApi is not configured on this fork"
       residence = build(:officing_residence, :invalid, document_number: "12345678Z")
       residence.save
 
@@ -202,6 +252,22 @@ describe Officing::Residence do
         user_id:         residence.user.id,
         poll_officer_id: residence.officer.id,
         document_number: "12345678Z",
+        document_type:   "1",
+        date_of_birth: nil,
+        postal_code: nil,
+        year_of_birth:   Time.current.year
+      )
+    end
+
+    it "stores failed census calls when using remote census api" do
+      residence = build(:officing_residence, :invalid, document_number: "87654321Z")
+      residence.save
+
+      expect(FailedCensusCall.count).to eq(1)
+      expect(FailedCensusCall.first).to have_attributes(
+        user_id:         residence.user.id,
+        poll_officer_id: residence.officer.id,
+        document_number: "87654321Z",
         document_type:   "1",
         date_of_birth: nil,
         postal_code: nil,
