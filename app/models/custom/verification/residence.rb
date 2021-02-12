@@ -23,6 +23,10 @@ class Verification::Residence
 
   private
 
+    def residency_valid?
+      @census_data.valid?
+    end
+
     def valid_postal_code?
       POSTAL_CODES.include? postal_code
     end

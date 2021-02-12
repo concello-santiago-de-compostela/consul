@@ -79,7 +79,15 @@ describe Verification::Residence do
 
   describe "tries" do
     it "increases tries after a call to the Census" do
+      skip "CensusApi is not configured on this fork"
       residence.postal_code = "28011"
+      residence.valid?
+      expect(residence.user.lock.tries).to eq(1)
+    end
+
+    it "increases tries after a call to the RemoteCensus" do
+      configure_remote_census_api
+      residence.document_number = "87654321Z"
       residence.valid?
       expect(residence.user.lock.tries).to eq(1)
     end
@@ -93,6 +101,7 @@ describe Verification::Residence do
 
   describe "Failed census call" do
     it "stores failed census API calls" do
+      skip "CensusApi is not configured on this fork"
       residence = build(:verification_residence, :invalid, document_number: "12345678Z")
       residence.save
 
@@ -103,6 +112,21 @@ describe Verification::Residence do
         document_type:   "1",
         date_of_birth:   Date.new(1980, 12, 31),
         postal_code:     "28001"
+      )
+    end
+
+    it "stores failed Remotecensus API calls" do
+      configure_remote_census_api
+      residence = build(:verification_residence, document_number: "87654321Z")
+      residence.save
+
+      expect(FailedCensusCall.count).to eq(1)
+      expect(FailedCensusCall.first).to have_attributes(
+        user_id:         residence.user.id,
+        document_number: "87654321Z",
+        document_type:   "1",
+        date_of_birth:   Date.new(1980, 12, 31),
+        postal_code:     "15688"
       )
     end
   end
