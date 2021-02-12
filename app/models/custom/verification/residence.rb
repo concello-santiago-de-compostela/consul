@@ -1,6 +1,9 @@
 require_dependency Rails.root.join("app", "models", "verification", "residence").to_s
 
 class Verification::Residence
+  POSTAL_CODES = %w[15688 15701 15702 15703 15704 15705 15706 15707 15820 15884 15890 15891 15892 15893 15896
+    15897 15898 15899].freeze
+
   validate :local_postal_code
   validate :local_residence
 
@@ -21,6 +24,6 @@ class Verification::Residence
   private
 
     def valid_postal_code?
-      postal_code =~ /^280/
+      POSTAL_CODES.include? postal_code
     end
 end
