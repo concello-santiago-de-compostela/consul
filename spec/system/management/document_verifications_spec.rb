@@ -34,6 +34,7 @@ describe "DocumentVerifications" do
   describe "Verifying througth Census" do
     context "Census API" do
       scenario "Verifying a user which does not exist and is not in the census shows an error" do
+        skip "CensusApi is not configured on this fork"
         expect_any_instance_of(Verification::Management::Document).to receive(:in_census?).
                                                                       and_return(false)
 
@@ -45,6 +46,7 @@ describe "DocumentVerifications" do
       end
 
       scenario "Verifying a user which does exists in the census but not in the db redirects allows sending an email" do
+        skip "CensusApi is not configured on this fork"
         visit management_document_verifications_path
         fill_in "document_verification_document_number", with: "12345678Z"
         click_button "Check document"
@@ -75,7 +77,7 @@ describe "DocumentVerifications" do
         visit management_document_verifications_path
         fill_in "document_verification_document_number", with: "12345678Z"
         select_date "31-December-1980", from: "document_verification_date_of_birth"
-        fill_in "document_verification_postal_code", with: "28013"
+        fill_in "document_verification_postal_code", with: "15688"
         click_button "Check document"
 
         expect(page).to have_content "Please introduce the email used on the account"

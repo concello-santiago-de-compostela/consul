@@ -61,6 +61,6 @@ FactoryBot.define do
     document_number
     document_type { "1" }
     date_of_birth { Date.new(1980, 12, 31) }
-    postal_code { "28013" }
+    postal_code { "15688" }
   end
 end
