@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soapenv:Body>
+    <SubmitRes xmlns="http://www.telefonica.es/MI/InterfazSimplificado/schemas">
+      <Version xmlns="">1.0</Version>
+      <Status xmlns="">
+        <StatusCode>1000</StatusCode>
+        <StatusText>Success</StatusText>
+        <Details>Message sent</Details>
+      </Status>
+    </SubmitRes>
+  </soapenv:Body>
+</soapenv:Envelope>

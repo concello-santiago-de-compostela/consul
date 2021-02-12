@@ -3,7 +3,7 @@ class SMSApi
   attr_accessor :client
 
   def initialize
-    @client = Savon.client(wsdl: url)
+    @client = Savon.client(wsdl: url, convert_request_keys_to: :camelcase)
   end
 
   def url
@@ -19,23 +19,27 @@ class SMSApi
   def sms_deliver(phone, code)
     return stubbed_response unless end_point_available?
 
-    response = client.call(:enviar_sms_simples, message: request(phone, code))
+    response = client.call(:sms_text_submit, message: request(phone, code))
     success?(response)
   end
 
   def request(phone, code)
-    { autorizacion:  authorization,
-      destinatarios: { destinatario: phone },
-      texto_mensaje: "Clave para verificarte: #{code}. Gobierno Abierto",
-      solicita_notificacion: "All" }
+    {
+      authorization: authorization,
+      delivery_report: "All",
+      recipients: { to: phone },
+      sender: Rails.application.secrets.sms_sender,
+      SMSText: I18n.t("sms_api.message", code: code),
+      version: "1.0"
+    }
   end
 
   def success?(response)
-    response.body[:respuesta_sms][:respuesta_servicio_externo][:texto_respuesta] == "Success"
+    response.body[:submit_res][:status][:status_text] == "Success"
   end
 
   def end_point_available?
-    Rails.env.staging? || Rails.env.preproduction? || Rails.env.production?
+    Rails.application.secrets.sms_end_point.present?
   end
 
   def stubbed_response

@@ -821,3 +821,5 @@ gl:
       alt: Escolle o texto que queres comentar e preme o botón que ten forma do lapis.
       text: Para comentar este documento, debes %{sign_in}%{sign_up}. Despois, escolle o texto que queres comentar e preme o botón que ten forma de lapis.
       title: Como podo comentar este documento?
+  sms_api:
+    message: "Clave para verificarse: %{code}. Goberno aberto"

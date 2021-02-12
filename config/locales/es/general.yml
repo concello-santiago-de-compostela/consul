@@ -963,3 +963,5 @@ es:
     create:
       enqueue_remote_translation: Se han solicitado correctamente las traducciones.
     button: Traducir página
+  sms_api:
+    message: "Clave para verificarte: %{code}. Gobierno Abierto"
